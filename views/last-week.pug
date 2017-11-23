@@ -5,9 +5,12 @@ doctype html
 html
   include includes/head
   body.last-week
-    header
-      a(href="/")
-        img.emailHeader(src=emailHeader)
+    if email
+      header
+          a(href="http://frogfeels.com/last-week")
+            img.emailHeader(src=emailHeader)
+    else
+      include includes/header
    
     if admin
       .alert Admin
@@ -35,7 +38,7 @@ html
         span.votes-award(style=`background-color: ${awardColor}`)= election
       p.sidenote psst, you can propose the
         span= " "
-        a(href=`${url}/new-election`)
+        a(href='/new-election')
           span next election
       each group in feelingGroups
         .group
@@ -75,10 +78,10 @@ html
 
     if email
       hr
-      section
+      section.email-unsubscribe
         p p.s You can
           span= " "
-          a(href=`${url}/unsubscribe`) unsubscribe
+          a(href='http://frogfeels.com/unsubscribe') unsubscribe
           span= " "
           span from future emails. I won't be (too) sad.
         p
