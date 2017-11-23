@@ -111,6 +111,7 @@ router.get '/masterpieces', (request, response) ->
     response.render 'masterpieces',
       title: 'Masterpieces'
       drawings: _.shuffle drawings
+      drawingsCount: drawings.length
       admin: process.env.ADMIN
   .catch (error) ->
     console.error '/masterpieces', error
